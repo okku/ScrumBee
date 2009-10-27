@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ScrumBee.PostItControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="100" Height="100">
+	<Canvas>
+		<Border Canvas.Left="2" Canvas.Top="10" Opacity="0.3" CornerRadius="3" Background="Black">
+			<Border.RenderTransform>
+				<RotateTransform Angle="-3"/>
+			</Border.RenderTransform>
+			<Rectangle  Width="100" Height="100" >
+			</Rectangle>
+		</Border>
+
+		<Border CornerRadius="3">
+			<Border.Background>
+				<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+					<GradientStop Color="Yellow" Offset="0"/>
+					<GradientStop Color="White" Offset="1.3"/>
+				</LinearGradientBrush>
+			</Border.Background>
+			<Grid Width="100" Height="100" x:Name="LayoutRoot">
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="17"/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Visibility="Visible" x:Name="blockText" Grid.Column="0" Grid.Row="0" FontFamily="Times New Roman" TextAlignment="Left" TextWrapping="Wrap" Margin="4" Opacity="0.5">Enter task description...</TextBlock>
+				<TextBox Visibility="Collapsed" x:Name="tbText" Grid.Column="0" Grid.Row="0" Text="" FontSize="14" AcceptsReturn="True" Margin="4"></TextBox>
+
+				<Border Grid.Column="0" Grid.Row="1">
+					<TextBlock x:Name="tbSP" Visibility="Visible" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold" TextAlignment="Right" Margin="0,0,4,0">1 SP</TextBlock>
+				</Border>
+			</Grid>
+		</Border>
+		<StackPanel Visibility="Collapsed"  x:Name="keypad" Canvas.Top="95" Canvas.Left="95">
+			<StackPanel Orientation="Horizontal">
+				<Button Content="1" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="2" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="3" Width="30" Margin="1" Click="Button_Click"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<Button Content="4" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="5" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="6" Width="30" Margin="1" Click="Button_Click"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<Button Content="7" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="8" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="+1" Width="30" Margin="1" Click="Button_Click"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<Button Content="1/4" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="1/2" Width="30" Margin="1" Click="Button_Click"/>
+				<Button Content="0" Width="30" Margin="1" Click="Button_Click"/>
+			</StackPanel>
+		</StackPanel>
+	</Canvas>
+
+</UserControl>

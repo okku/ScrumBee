@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumBee", "ScrumBee\ScrumBee.csproj", "{84A36B8D-2DC8-4590-A613-92845CAE46C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumBee.Web", "ScrumBee.Web\ScrumBee.Web.csproj", "{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84A36B8D-2DC8-4590-A613-92845CAE46C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A36B8D-2DC8-4590-A613-92845CAE46C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A36B8D-2DC8-4590-A613-92845CAE46C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A36B8D-2DC8-4590-A613-92845CAE46C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
