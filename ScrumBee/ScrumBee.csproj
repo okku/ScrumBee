@@ -56,6 +56,7 @@
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Ria, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
@@ -101,6 +102,12 @@
     <Resource Include="images\postit.png" />
     <Resource Include="images\story.png" />
     <Resource Include="images\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScrumBee.DomainServices\ScrumBee.DomainServices.csproj">
+      <Project>{61379A6D-612D-454E-BDE5-521FC431D4CF}</Project>
+      <Name>ScrumBee.DomainServices %28ScrumBee.DomainServices\ScrumBee.DomainServices%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

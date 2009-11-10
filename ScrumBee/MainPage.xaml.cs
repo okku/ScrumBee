@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -8,7 +9,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Ria.Data;
 using System.Windows.Shapes;
+using ScrumBee.DomainServices.Web;
+using ScrumBee.Model;
 using Scrumboard.code;
 
 namespace ScrumBee
@@ -27,6 +31,28 @@ namespace ScrumBee
 			MouseLeftButtonUp += Page_MouseLeftButtonUp;
 			MouseLeftButtonDown += new MouseButtonEventHandler(Page_MouseLeftButtonDown);
 			
+			// Testing RIA
+			var context = new ScrumBeeContext();
+			var query = from s in context.GetStoriesQuery()
+						where s.Name.Length > 0
+						select s;
+			LoadOperation<Story> loadOperation = context.Load(query, StoriesLoadedCallback, null);
+			
+		}
+
+		private void StoriesLoadedCallback(LoadOperation<Story> lo)
+		{
+			if(!lo.HasError)
+			{
+				foreach (var story in lo.Entities)
+				{
+					Debug.WriteLine(story.Name);
+				}
+			}
+			else
+			{
+				throw lo.Error;
+			}
 		}
 
 		void Page_MouseMove(object sender, MouseEventArgs e)

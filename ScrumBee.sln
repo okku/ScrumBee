@@ -5,6 +5,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumBee", "ScrumBee\ScrumB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumBee.Web", "ScrumBee.Web\ScrumBee.Web.csproj", "{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScrumBee.DomainServices", "ScrumBee.DomainServices", "{4851F00C-4A7A-4061-A62C-0DCE9C7762F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumBee.DomainServices.Web", "ScrumBee.DomainServices.Web\ScrumBee.DomainServices.Web.csproj", "{2EFB7989-5E87-41AC-8D39-20B6B7F6A606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumBee.DomainServices", "ScrumBee.DomainServices\ScrumBee.DomainServices.csproj", "{61379A6D-612D-454E-BDE5-521FC431D4CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2EFB7989-5E87-41AC-8D39-20B6B7F6A606} = {2EFB7989-5E87-41AC-8D39-20B6B7F6A606}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumBee.Model", "ScrumBee.Model\ScrumBee.Model.csproj", "{4B941E7D-9AB4-4956-AB23-6527D70B08C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +30,24 @@ Global
 		{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B9DAAC-4072-4D8E-8AC5-F0A7BCF515A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EFB7989-5E87-41AC-8D39-20B6B7F6A606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EFB7989-5E87-41AC-8D39-20B6B7F6A606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EFB7989-5E87-41AC-8D39-20B6B7F6A606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EFB7989-5E87-41AC-8D39-20B6B7F6A606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61379A6D-612D-454E-BDE5-521FC431D4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61379A6D-612D-454E-BDE5-521FC431D4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61379A6D-612D-454E-BDE5-521FC431D4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61379A6D-612D-454E-BDE5-521FC431D4CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B941E7D-9AB4-4956-AB23-6527D70B08C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B941E7D-9AB4-4956-AB23-6527D70B08C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B941E7D-9AB4-4956-AB23-6527D70B08C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B941E7D-9AB4-4956-AB23-6527D70B08C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2EFB7989-5E87-41AC-8D39-20B6B7F6A606} = {4851F00C-4A7A-4061-A62C-0DCE9C7762F9}
+		{61379A6D-612D-454E-BDE5-521FC431D4CF} = {4851F00C-4A7A-4061-A62C-0DCE9C7762F9}
 	EndGlobalSection
 EndGlobal
