@@ -9,7 +9,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Ria.Data;
+using System.Windows.Ria;
 using System.Windows.Shapes;
 using ScrumBee.DomainServices.Web;
 using ScrumBee.Model;

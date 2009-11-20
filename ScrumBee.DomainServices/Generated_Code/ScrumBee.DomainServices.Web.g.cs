@@ -15,8 +15,10 @@ namespace ScrumBee.DomainServices.Web
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.ServiceModel;
     using System.Web.Ria.Data;
-    using System.Windows.Ria.Data;
+    using System.Windows.Ria;
+    using System.Windows.Ria.Services;
     using ScrumBee.Model;
     
     
@@ -38,7 +40,7 @@ namespace ScrumBee.DomainServices.Web
         /// Default constructor.
         /// </summary>
         public ScrumBeeContext() : 
-                this(new HttpDomainClient(new Uri("DataService.axd/ScrumBee-DomainServices-Web-ScrumBeeService/", System.UriKind.Relative)))
+                this(new WebDomainClient<IScrumBeeServiceContract>(new Uri("ScrumBee-DomainServices-Web-ScrumBeeService.svc", UriKind.Relative)))
         {
         }
         
@@ -49,7 +51,7 @@ namespace ScrumBee.DomainServices.Web
         /// The ScrumBeeService data service URI.
         /// </param>
         public ScrumBeeContext(Uri serviceUri) : 
-                this(new HttpDomainClient(serviceUri))
+                this(new WebDomainClient<IScrumBeeServiceContract>(serviceUri))
         {
         }
         
@@ -65,11 +67,11 @@ namespace ScrumBee.DomainServices.Web
             this.OnCreated();
         }
         
-        public EntityList<Story> Stories
+        public EntitySet<Story> Stories
         {
             get
             {
-                return base.Entities.GetEntityList<Story>();
+                return base.EntityContainer.GetEntitySet<Story>();
             }
         }
         
@@ -78,6 +80,7 @@ namespace ScrumBee.DomainServices.Web
         /// </summary>
         public EntityQuery<Story> GetStoriesQuery()
         {
+            this.ValidateMethod("GetStoriesQuery", null);
             return base.CreateQuery<Story>("GetStories", null, false, true);
         }
         
@@ -86,12 +89,29 @@ namespace ScrumBee.DomainServices.Web
             return new ScrumBeeContextEntityContainer();
         }
         
+        [ServiceContract()]
+        public interface IScrumBeeServiceContract
+        {
+            
+            [FaultContract(typeof(DomainServiceFault), Action="http://tempuri.org/ScrumBeeService/GetStoriesDomainServiceFault", Name="DomainServiceFault", Namespace="DomainServices")]
+            [OperationContract(AsyncPattern=true, Action="http://tempuri.org/ScrumBeeService/GetStories", ReplyAction="http://tempuri.org/ScrumBeeService/GetStoriesResponse")]
+            IAsyncResult BeginGetStories(AsyncCallback callback, object asyncState);
+            
+            QueryResult<Story> EndGetStories(IAsyncResult result);
+            
+            [FaultContract(typeof(DomainServiceFault), Action="http://tempuri.org/ScrumBeeService/SubmitChangesDomainServiceFault", Name="DomainServiceFault", Namespace="DomainServices")]
+            [OperationContract(AsyncPattern=true, Action="http://tempuri.org/ScrumBeeService/SubmitChanges", ReplyAction="http://tempuri.org/ScrumBeeService/SubmitChangesResponse")]
+            IAsyncResult BeginSubmitChanges(IEnumerable<ChangeSetEntry> changeSet, AsyncCallback callback, object asyncState);
+            
+            IEnumerable<ChangeSetEntry> EndSubmitChanges(IAsyncResult result);
+        }
+        
         internal sealed class ScrumBeeContextEntityContainer : EntityContainer
         {
             
             public ScrumBeeContextEntityContainer()
             {
-                this.CreateEntityList<Story>(EntityListOperations.All);
+                this.CreateEntitySet<Story>(EntitySetOperations.All);
             }
         }
     }
@@ -105,7 +125,8 @@ namespace ScrumBee.Model
     using System.Linq;
     using System.Runtime.Serialization;
     using System.Web.Ria.Data;
-    using System.Windows.Ria.Data;
+    using System.Windows.Ria;
+    using System.Windows.Ria.Services;
     
     
     [DataContract(Namespace="http://schemas.datacontract.org/2004/07/ScrumBee.Model")]
